@@ -192,6 +192,9 @@ margin: 0 auto;
 font-size: 1.5rem;
 color: #FFFF;
 font-weight: 600;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .buttom div {
