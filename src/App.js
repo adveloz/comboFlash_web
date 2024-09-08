@@ -11,6 +11,7 @@ function App() {
        <CartProvider>
     <Header/>
     <MealCombos/>
+    <hr></hr>
     <Meal/>
     </CartProvider>
     </div>
