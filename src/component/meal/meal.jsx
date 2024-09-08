@@ -36,7 +36,7 @@ const iniData = (data) => {
   }));
 };
 
-export const MealCombos = () => {
+export const Meal = () => {
   const { cartItems, addToCart } = useContext(CartContext);
   const [items, setItems] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -45,7 +45,7 @@ export const MealCombos = () => {
   React.useEffect(() => {
     setLoading(true);
     serviTask
-      .get('mealCombos')
+      .get('meal')
       .then((response) => {
         setItems(iniData(response.data));
       })
@@ -65,7 +65,7 @@ export const MealCombos = () => {
 
   return (
     <>
-      <h1 className="title">Combos de comida</h1>
+      <h1 className="title">Alimentos</h1>
       <div className="filter">
       <form onSubmit={(e) => {
         e.preventDefault();

@@ -2,6 +2,7 @@ import React from "react";
 import { CartProvider } from './component/cartContext';
 import {Header} from "./component/header/header";
 import { MealCombos } from "./component/mealCombos/mealCombos";
+import {Meal} from "./component/meal/meal";
 import 'boxicons'; 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
        <CartProvider>
     <Header/>
     <MealCombos/>
+    <Meal/>
     </CartProvider>
     </div>
   );
