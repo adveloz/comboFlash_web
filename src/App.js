@@ -1,21 +1,16 @@
 import React from "react";
+import { CartProvider } from './component/cartContext';
 import {Header} from "./component/header/header";
-import {ProductsList} from "./component/products/products";
-import 'boxicons';
+import { MealCombos } from "./component/mealCombos/mealCombos";
+import 'boxicons'; 
 
 function App() {
   return (
     <div className="App">
+       <CartProvider>
     <Header/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
-    <ProductsList/>
+    <MealCombos/>
+    </CartProvider>
     </div>
   );
 }

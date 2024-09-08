@@ -72,8 +72,10 @@
 import React from "react";
 import Img from "./Pasted image.png";
 import serviTask from "../axiosConfig";
+import { useContext } from 'react';
+import { CartContext } from './../cartContext';
 
-const ProductCard = ({ product }) => (
+const ProductCard = ({ product, onAddToCart }) => (
   <div className="producto">
     <a href="#">
       <div className="producto__img">
@@ -87,11 +89,11 @@ const ProductCard = ({ product }) => (
       <p>Descripción: {product.description}</p>
     </div>
     <div className="buttom">
-      <button className="btn">Agregar al carrito</button>
-      <div>
-        <a href="#" className="btn">Ver</a>
-      </div>
+      <button className="btn" onClick={() => onAddToCart(product)}>Agregar al carrito</button>
     </div>
+      {/* <div>
+        <a href="#" className="btn">Ver</a>
+      </div> */}
   </div>
 );
 
@@ -105,7 +107,8 @@ const iniData = (data) => {
   }));
 };
 
-export const ProductsList = () => {
+export const MealCombos = () => {
+  const { cartItems, addToCart } = useContext(CartContext);
   const [items, setItems] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [filter, setFilter] = React.useState("");
@@ -127,9 +130,14 @@ export const ProductsList = () => {
     item.areaCountry.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
   return (
     <>
       <h1 className="title">Combos de comida</h1>
+      <div className="filter">
       <form onSubmit={(e) => {
         e.preventDefault();
         // Aquí puedes agregar la lógica para manejar el formulario si lo necesitas
@@ -141,12 +149,13 @@ export const ProductsList = () => {
           placeholder="Filtrar por provincia..."
         />
       </form>
+      </div>
       <div className="productos">
         {loading ? (
           <p>Cargando...</p>
         ) : (
           filteredItems.map((product, index) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} onAddToCart={() => handleAddToCart(product)}/>
           ))
         )}
       </div>

@@ -1,11 +1,17 @@
 import React from "react";
+import {Routes, Route} from "react-router-dom";
+import { Home } from "./home/home";
+import { MealCombos } from "./mealCombos/mealCombos";
 
-function Pages() {
+export const Pages = () => {
   return (
-    <div className="Pages">
-    <h1>Hola mundo</h1>
-    </div>
+    <section>
+      <Routes>  
+        <Route path="/" exact component={Home}/>
+        <Route path="/productos" exact component={MealCombos}/>
+      </Routes>
+    </section>
   );
 }
 
-export default Pages;
+
