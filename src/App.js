@@ -11,6 +11,7 @@ function App() {
        <CartProvider>
     <Header/>
     <MealCombos/>
+    <br></br>
     <hr></hr>
     <Meal/>
     </CartProvider>
