@@ -29,7 +29,7 @@ export const Header = () => {
   }, [location]);
 
   return (
-    <header>
+    <header style={{zIndex:"1000"}}>
        <Button variant="outline-primary" onClick={toggleOffcanvas} style={{backgroundColor: "#F34338", border: "none"}}>
         <box-icon name="menu"></box-icon>
       </Button>
