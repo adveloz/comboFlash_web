@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { motion } from 'framer-motion';
 
 export const Home = () => {
   return (
@@ -27,6 +28,11 @@ export const Home = () => {
       `}
     </style>
     <div className="row justify-content-center">
+    <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 3 }}
+          transition={{ duration: 3 }}
+        >
       <div className="col-md-8">
         <div className="card shadow blur-card">
           <div className="card-body">
@@ -66,8 +72,13 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      </motion.div>
     </div>
-    
+    <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 3 }}
+          transition={{ duration: 3 }}
+        >
     <div className="row mt-5">
       <div className="col-md-4">
         <div className="card mb-4 blur-card">
@@ -94,6 +105,7 @@ export const Home = () => {
         </div>
       </div>
     </div>
+    </motion.div>
   </div>
   )
 }
