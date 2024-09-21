@@ -6,6 +6,7 @@ import {Meal} from "./component/meal/meal";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'boxicons'; 
 import {Home} from "./component/home/home";
+import AppProvider from "./component/providers/appProviders";
 
 function App() {
   const AppBoard = ({ children }) => {
@@ -26,6 +27,7 @@ function App() {
 
 return (
 <Router>
+<AppProvider>
 <CartProvider>
         <Routes>
           <Route
@@ -55,6 +57,7 @@ return (
           {/* <Route path="*" element={<NotFound />} /> sustituir 404 */}
         </Routes>
         </CartProvider>
+        </AppProvider>
     </Router>
   );
 }
