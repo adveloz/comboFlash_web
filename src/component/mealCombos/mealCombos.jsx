@@ -1,12 +1,12 @@
 import React from "react";
 import Img from "./Pasted image.png";
 import serviTask from "../axiosConfig";
-import { useContext } from 'react';
-import { CartContext } from './../cartContext';
+import { useCart } from '../cartContext'; // Importar useCart en su lugar
 import { motion } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Card, Button, Form, Spinner } from 'react-bootstrap';
 import { AppContext } from "../providers/appProviders";
+import { useContext } from 'react';
 
 const ProductCard = ({ product, onAddToCart }) => (
   
@@ -23,7 +23,7 @@ const ProductCard = ({ product, onAddToCart }) => (
   <motion.div whileHover={{ scale: 1.05 }} className="overflow-hidden">
   <a href="#">
       <div className="producto__img" style={{display: "flex", justifyContent: 'center', marginTop: "10px"}}>
-        <img src={Img} alt="producto" />
+        <img src={Img} alt="producto" style={{borderRadius: "15px"}} />
       </div>
     </a>
   </motion.div>
@@ -57,7 +57,7 @@ const iniData = (data) => {
 };
 
 export const MealCombos = () => {
-  const { cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart } = useCart();
   const [items, setItems] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [filter, setFilter] = React.useState("");
@@ -74,7 +74,7 @@ export const MealCombos = () => {
         console.error("Error cargando datos:", error);
       })
       .finally(() => setLoading(false));
-  }, [showNotificationApp]);
+  }, []);
 
   const filteredItems = items.filter(item => 
     item.areaCountry.toLowerCase().includes(filter.toLowerCase())
@@ -100,7 +100,6 @@ export const MealCombos = () => {
             placeholder="Filtrar por provincia..."
             className="form-control-lg"
           />
-
         </Form.Group>
       </Form>
       {loading ? (
@@ -118,7 +117,6 @@ export const MealCombos = () => {
           ))}
         </Row>
       )}
- 
-      </Container>
+    </Container>
   );
 };
